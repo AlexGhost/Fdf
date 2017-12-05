@@ -14,10 +14,8 @@ $(NAME) : submake $(OBJ)
 	@echo "\033[32m|------------- $(NAME) crée -------------| \\033[0m"
 	@echo "\033[32m\------------------------------------/ \\033[0m"
 
-cpp : submake
-	@cpp $(CFLAG) $(SRC) -Ilibft/ -Llibft -lft -o $(NAME)
-
 submake :
+	@$(MAKE) -C minilibx_macos/
 	@$(MAKE) -C libft/
 
 %.o: %.c
@@ -25,6 +23,7 @@ submake :
 	@$(CC) -o $@ -c $< -Ilibft
 
 clean :
+	@$(MAKE) clean -C minilibx_macos/
 	@$(MAKE) fclean -C libft/
 	@rm -f $(OBJ)
 
