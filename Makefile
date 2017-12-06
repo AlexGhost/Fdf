@@ -8,7 +8,7 @@ OBJ = $(SRC:.c=.o)
 all : $(NAME)
 
 $(NAME) : submake $(OBJ)
-	@$(CC) $(OBJ) -Llibft -lft -o $(NAME)
+	@$(CC) $(OBJ) -Llibft -lft -Lminilibx_macos -lmlx -o $(NAME)
 	@printf "\r\033[K"
 	@echo "\033[32m/------------------------------------\ \\033[0m"
 	@echo "\033[32m|------------- $(NAME) crée -------------| \\033[0m"
