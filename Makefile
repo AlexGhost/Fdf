@@ -8,7 +8,7 @@ OBJ = $(SRC:.c=.o)
 all : $(NAME)
 
 $(NAME) : submake $(OBJ)
-	@$(CC) $(OBJ) -Ilibft/ -Llibft -lft -o $(NAME)
+	@$(CC) $(OBJ) -Llibft -lft -o $(NAME)
 	@printf "\r\033[K"
 	@echo "\033[32m/------------------------------------\ \\033[0m"
 	@echo "\033[32m|------------- $(NAME) crée -------------| \\033[0m"
@@ -20,7 +20,7 @@ submake :
 
 %.o: %.c
 	@printf "\r\033[K""\033[36m - Compilation de \033[0m$<\033[0m"
-	@$(CC) -o $@ -c $< -Ilibft
+	@$(CC) -o $@ -c $<
 
 clean :
 	@$(MAKE) clean -C minilibx_macos/

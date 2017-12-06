@@ -1,7 +1,7 @@
-#include <stdio.h>
+#include "./libft/libft.h"
 
 int			main(void)
 {
-	printf("fdf !\n");
+	ft_putendl("fdf !");
 	return (0);
 }
