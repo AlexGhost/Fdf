@@ -6,11 +6,12 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 15:04:13 by acourtin          #+#    #+#             */
-/*   Updated: 2017/11/28 15:22:27 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/11 16:03:38 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "get_next_line.h"
+#include "./libft/libft.h"
 
 static int		remalloc(char **save)
 {
@@ -52,24 +53,26 @@ static int		process(char **save, char **line)
 
 int				get_next_line(const int fd, char **line)
 {
-	static char	*save;
+	static char	*save[4866];
 	int			b;
 
-	if (!line || (!save && !(save = ft_strnew(BUFF_SIZE))) \
-			|| !(*line = ft_strnew(BUFF_SIZE)) || fd < 0 || BUFF_SIZE <= 0)
+	if (fd < 0)
+		return (-1);
+	if (!line || (!save[fd] && !(save[fd] = ft_strnew(BUFF_SIZE))) \
+			|| !(*line = ft_strnew(BUFF_SIZE)) || BUFF_SIZE <= 0)
 		return (-1);
 	while ((b = read(fd, *line, BUFF_SIZE)) != 0)
 	{
 		if (b < 0)
 			return (-1);
-		if (remalloc(&save) == 0)
+		if (remalloc(&save[fd]) == 0)
 			return (-1);
-		save = ft_strncat(save, *line, b);
+		save[fd] = ft_strncat(save[fd], *line, b);
 		if (ft_memchr(save, '\n', BUFF_SIZE))
 			break ;
 	}
-	if (process(&save, line))
+	if (process(&save[fd], line))
 		return (1);
-	ft_strdel(&save);
+	ft_strdel(&save[fd]);
 	return (0);
 }
