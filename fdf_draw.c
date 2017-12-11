@@ -19,6 +19,12 @@ void		fdf_drawcube(void *mlx, void *win, int coord[], int color)
 	}
 }
 
+void		fdf_drawline(void *mlx, void *win, int coord[], int color)
+{
+			mlx_pixel_put(mlx, win, coord[0], coord[1], color);
+			mlx_pixel_put(mlx, win, coord[2], coord[3], color);
+}
+
 void		testdraw(void *mlx, void *win)
 {
 	int coord[4];
@@ -38,4 +44,9 @@ void		testdraw(void *mlx, void *win)
 	coord[2] = 250;
 	coord[3] = 250;
 	fdf_drawcube(mlx, win, coord, C_WHITE);
+	coord[0] = 2;
+	coord[1] = 2;
+	coord[2] = 398;
+	coord[3] = 398;
+	fdf_drawline(mlx, win, coord, C_WHITE);
 }
