@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 11:34:42 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/11 11:34:44 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/11 15:33:19 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 # define FDF_COLORS_H
 
 # define C_WHITE 0x00FFFFFF
+# define C_GRAY 0x00E7E7E7
 # define C_GREEN 0x009FE855
 # define C_BLUE 0x0077B5FE
+# define C_RED 0x00C1332B
+# define C_BROWN 0x00663300
 
 #endif
