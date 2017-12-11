@@ -6,12 +6,11 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 15:04:13 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/11 16:03:38 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/11 16:07:34 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include "./libft/libft.h"
+#include "libft.h"
 
 static int		remalloc(char **save)
 {
