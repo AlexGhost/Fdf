@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/11 11:34:53 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/11 12:01:02 by acourtin         ###   ########.fr       */
+/*   Created: 2017/12/11 11:03:46 by acourtin          #+#    #+#             */
+/*   Updated: 2017/12/11 11:05:02 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include "minilibx_macos/mlx.h"
-
-void			fdf_drawline(void *mlx, void *win, int coord[], int color);
-void			testdraw(void *mlx, void *win);
-
-#endif
+int			ft_abs(int n)
+{
+	if (n < 0)
+		return (-n);
+	else
+		return (n);
+}

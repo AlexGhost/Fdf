@@ -6,7 +6,7 @@
 #    By: acourtin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 10:27:54 by acourtin          #+#    #+#              #
-#    Updated: 2017/11/27 21:54:30 by acourtin         ###   ########.fr        #
+#    Updated: 2017/12/11 11:07:17 by acourtin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRC.C = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 		ft_strtrim.c ft_tolower.c ft_toupper.c ft_lstnew.c ft_lstdel.c \
 		ft_lstdelone.c ft_lstadd.c ft_lsttail.c ft_lstiter.c ft_lstmap.c \
 		ft_lstsize.c ft_lstat.c ft_lstrev.c ft_lstlast.c ft_strnjoin.c \
-		get_next_line.c
+		get_next_line.c ft_abs.c
 
 SRC.O 		= 	$(SRC.C:.c=.o)
 

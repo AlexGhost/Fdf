@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 11:14:59 by acourtin          #+#    #+#             */
-/*   Updated: 2017/11/27 21:54:58 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/11 11:05:49 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,6 @@ t_list				*ft_lstat(t_list *lst, unsigned int nbr);
 void				ft_lstrev(t_list **lst);
 t_list				*ft_lstlast(t_list *lst);
 int					get_next_line(const int fd, char **line);
+int					ft_abs(int n);
 
 #endif
