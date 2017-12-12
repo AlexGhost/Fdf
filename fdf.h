@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 11:34:53 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/11 16:28:42 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/12 15:00:23 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 void			testdraw(void *mlx, void *win);
 void			fdf_drawline(void *mlx, void *win, int coord[], int color);
-int				fdf_readfile(char *filename);
+int				fdf_checkfile(char *filename, int *x, int *y);
+int				fdf_readfile(char *filename, int x, int y);
 
 #endif
