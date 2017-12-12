@@ -6,11 +6,26 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 15:53:20 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/12 16:37:42 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/12 18:34:05 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static void	deletemat(int **tab, int y)
+{
+	int i;
+
+	i = 0;
+	while (i < y)
+	{
+		free(tab[i]);
+		tab[i] = NULL;
+		i++;
+	}
+	free(tab);
+	tab = NULL;
+}
 
 static void	createwindow(int **tab, int x, int y)
 {
@@ -40,5 +55,5 @@ void		fdf_displayfile(int **tab, int x, int y)
 		ft_putchar('\n');
 		j++;
 	}
-	//createwindow(tab, x, y);
+	deletemat(tab, y);
 }

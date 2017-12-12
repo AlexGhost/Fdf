@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 16:23:05 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/12 17:47:03 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/12 19:07:33 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@ static void		deletemat(char **tab)
 	int i;
 
 	i = 0;
-	while (tab[i])
+	while (tab[i] != NULL)
 	{
-		ft_strdel(&tab[i]);
+		free(tab[i]);
+		tab[i] = NULL;
 		i++;
 	}
-	ft_memdel((void**) tab);
+	free(tab);
+	tab = NULL;
 }
 
 static int		**mallocmat(int x, int y)
@@ -32,10 +34,10 @@ static int		**mallocmat(int x, int y)
 	int j;
 
 	i = 0;
-	tab = ft_memalloc((size_t) y * sizeof(int*));
+	tab = ft_memalloc((size_t)y * sizeof(int*));
 	while (i < y)
 	{
-		tab[i] = ft_memalloc((size_t) x * sizeof(int));
+		tab[i] = ft_memalloc((size_t)x * sizeof(int));
 		i++;
 	}
 	return (tab);
@@ -47,21 +49,21 @@ int				fdf_checkfile(char *filename, int *x, int *y)
 	char	*line;
 	char	**tab;
 
-	line = NULL;
 	tab = NULL;
 	if ((fd = open(filename, O_RDONLY)))
 	{
-		if (fd < 0)
-			return (0);
 		while (get_next_line(fd, &line))
 		{
-			*x = 0;
+			if (tab)
+				deletemat(tab);
 			tab = ft_strsplit(line, ' ');
-			while (tab[*x] != NULL)
-				*x += 1;
 			*y += 1;
-			deletemat(tab);
+			ft_strdel(&line);
 		}
+		*x = 0;
+		while (tab[*x] != NULL)
+			*x += 1;
+		deletemat(tab);
 		close(fd);
 		ft_strdel(&line);
 	}
@@ -70,7 +72,7 @@ int				fdf_checkfile(char *filename, int *x, int *y)
 	return (1);
 }
 
-int				fdf_readfile(char *filename, int x, int y)
+void			fdf_readfile(char *filename, int x, int y)
 {
 	int		fd;
 	char	*line;
@@ -78,14 +80,13 @@ int				fdf_readfile(char *filename, int x, int y)
 	int		**tabi;
 	int		i[2];
 
-	line = NULL;
 	tabi = mallocmat(x, y);
 	fd = open(filename, O_RDONLY);
 	i[1] = 0;
 	while (get_next_line(fd, &line))
 	{
-		tab = NULL;
 		tab = ft_strsplit(line, ' ');
+		ft_strdel(&line);
 		i[0] = 0;
 		while (tab[i[0]])
 		{
@@ -98,5 +99,4 @@ int				fdf_readfile(char *filename, int x, int y)
 	close(fd);
 	ft_strdel(&line);
 	fdf_displayfile(tabi, x, y);
-	return (1);
 }

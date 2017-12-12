@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 11:11:42 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/11 16:17:17 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/12 18:34:47 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,8 @@ void		testdraw(void *mlx, void *win)
 	coord[3] = 0;
 	while (i < 360)
 	{
-		coord[2] += i/10;
-		coord[3] += i/2;
+		coord[2] += i / 10;
+		coord[3] += i / 2;
 		fdf_drawline(mlx, win, coord, color);
 		i++;
 	}
