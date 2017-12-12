@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 16:23:05 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/12 19:07:33 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/12 20:26:55 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,32 +27,27 @@ static void		deletemat(char **tab)
 	tab = NULL;
 }
 
-static int		**mallocmat(int x, int y)
+static int		getlength(char **tab)
 {
-	int **tab;
 	int i;
-	int j;
 
 	i = 0;
-	tab = ft_memalloc((size_t)y * sizeof(int*));
-	while (i < y)
-	{
-		tab[i] = ft_memalloc((size_t)x * sizeof(int));
-		i++;
-	}
-	return (tab);
+	while (tab[i] != NULL)
+		i += 1;
+	return (i);
 }
 
 int				fdf_checkfile(char *filename, int *x, int *y)
 {
 	int		fd;
+	int		i;
 	char	*line;
 	char	**tab;
 
-	tab = NULL;
-	if ((fd = open(filename, O_RDONLY)))
+	if ((fd = open(filename, O_RDONLY)) > 0)
 	{
-		while (get_next_line(fd, &line))
+		tab = NULL;
+		while ((i = get_next_line(fd, &line)) == 1)
 		{
 			if (tab)
 				deletemat(tab);
@@ -60,9 +55,10 @@ int				fdf_checkfile(char *filename, int *x, int *y)
 			*y += 1;
 			ft_strdel(&line);
 		}
-		*x = 0;
-		while (tab[*x] != NULL)
-			*x += 1;
+		ft_strdel(&line);
+		if (i == -1)
+			return (0);
+		*x = getlength(tab);
 		deletemat(tab);
 		close(fd);
 		ft_strdel(&line);
@@ -72,7 +68,7 @@ int				fdf_checkfile(char *filename, int *x, int *y)
 	return (1);
 }
 
-void			fdf_readfile(char *filename, int x, int y)
+int				fdf_readfile(char *filename, int x, int y)
 {
 	int		fd;
 	char	*line;
@@ -80,16 +76,18 @@ void			fdf_readfile(char *filename, int x, int y)
 	int		**tabi;
 	int		i[2];
 
-	tabi = mallocmat(x, y);
+	tabi = fdf_mallocmat(x, y);
 	fd = open(filename, O_RDONLY);
 	i[1] = 0;
-	while (get_next_line(fd, &line))
+	while (get_next_line(fd, &line) == 1)
 	{
 		tab = ft_strsplit(line, ' ');
 		ft_strdel(&line);
 		i[0] = 0;
 		while (tab[i[0]])
 		{
+			if (ft_isdigit(*tab[i[0]]) == 0)
+				return (0);
 			tabi[i[1]][i[0]] = ft_atoi(tab[i[0]]);
 			i[0]++;
 		}
@@ -99,4 +97,5 @@ void			fdf_readfile(char *filename, int x, int y)
 	close(fd);
 	ft_strdel(&line);
 	fdf_displayfile(tabi, x, y);
+	return (1);
 }
