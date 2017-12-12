@@ -1,7 +1,8 @@
 NAME = fdf
 CFLAG = -Wall -Werror -Wextra
-CC = gcc $(CFLAG)
-SRC = main.c fdf_draw.c fdf_file.c
+##CC = gcc $(CFLAG)
+CC = gcc
+SRC = main.c fdf_draw.c fdf_file.c fdf_window.c
 
 OBJ = $(SRC:.c=.o)
 

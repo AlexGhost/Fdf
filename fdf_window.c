@@ -1,38 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   fdf_window.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/11 11:34:34 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/12 17:48:47 by acourtin         ###   ########.fr       */
+/*   Created: 2017/12/12 15:53:20 by acourtin          #+#    #+#             */
+/*   Updated: 2017/12/12 16:37:42 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int			main(int ac, char **av)
+static void	createwindow(int **tab, int x, int y)
 {
-	int x;
-	int y;
+	void		*mlx;
+	void		*win;
 
-	x = 0;
-	y = 0;
-	if (ac != 2)
+	mlx = mlx_init();
+	win = mlx_new_window(mlx, 800, 800, "fdf");
+	mlx_loop(mlx);
+}
+
+void		fdf_displayfile(int **tab, int x, int y)
+{
+	int i;
+	int j;
+
+	j = 0;
+	while (j < y)
 	{
-		ft_putendl("usage: <filename> | name of fdf file");
-		return (0);
-	}
-	else if (fdf_checkfile(av[1], &x, &y))
-	{
-		ft_putendl("file valid");
-		ft_putstr("x: ");
-		ft_putnbr(x);
-		ft_putstr("  y: ");
-		ft_putnbr(y);
+		i = 0;
+		while (i < x)
+		{
+			ft_putnbr(tab[j][i]);
+			ft_putchar(' ');
+			i++;
+		}
 		ft_putchar('\n');
-		//fdf_readfile(av[1], x, y);
+		j++;
 	}
-	return (0);
+	//createwindow(tab, x, y);
 }
