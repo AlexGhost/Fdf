@@ -6,12 +6,11 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 15:53:20 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/13 13:54:02 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/13 15:06:33 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "fdf_colors.h"
 
 static void	deletemat(int **tab, int y)
 {
@@ -40,28 +39,14 @@ static int	exitfdf(int keycode, void *param)
 
 static void	createwindow(int **tab, int x, int y)
 {
-	void		*mlx;
-	void		*win;
-	int			i;
-	int			j;
+	t_mlx		smlx;
 
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 800, 800, "fdf");
-	j = 0;
-	while (j < y)
-	{
-		i = 0;
-		while (i < x)
-		{
-			if (tab[j][i] != 0)
-				mlx_pixel_put(mlx, win, i, j, C_WHITE);
-			i++;
-		}
-		j++;
-	}
+	smlx.mlx = mlx_init();
+	smlx.win = mlx_new_window(smlx.mlx, WIN_WIDTH, WIN_HEIGHT, "fdf");
+	fdf_drawgrid(smlx, tab, x, y);
 	deletemat(tab, y);
-	mlx_key_hook(win, exitfdf, 0);
-	mlx_loop(mlx);
+	mlx_key_hook(smlx.win, exitfdf, 0);
+	mlx_loop(smlx.mlx);
 }
 
 void		fdf_displayfile(int **tab, int x, int y)

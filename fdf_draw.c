@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 11:11:42 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/12 18:34:47 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/13 14:31:59 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,25 +89,4 @@ void		fdf_drawline(void *mlx, void *win, int coord[], int color)
 	}
 	mlx_pixel_put(mlx, win, coord[0], coord[1], color);
 	mlx_pixel_put(mlx, win, coord[2], coord[3], color);
-}
-
-void		testdraw(void *mlx, void *win)
-{
-	int i;
-	int color;
-	int coord[4];
-
-	color = C_WHITE;
-	i = 0;
-	coord[0] = 0;
-	coord[1] = 0;
-	coord[2] = 0;
-	coord[3] = 0;
-	while (i < 360)
-	{
-		coord[2] += i / 10;
-		coord[3] += i / 2;
-		fdf_drawline(mlx, win, coord, color);
-		i++;
-	}
 }
