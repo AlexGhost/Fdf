@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 11:34:53 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/13 15:04:16 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/13 17:20:31 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "libft/libft.h"
 # include "minilibx_macos/mlx.h"
 
-# define WIN_WIDTH 800
+# define WIN_WIDTH 1300
 # define WIN_HEIGHT 800
 
 typedef struct	s_mlx
@@ -25,6 +25,14 @@ typedef struct	s_mlx
 	void		*mlx;
 	void		*win;
 }				t_mlx;
+
+typedef struct	s_coord
+{
+	int			c[2];
+	int			dc[2];
+	int			lc[2];
+	int			*err;
+}				t_coord;
 
 void			testdraw(void *mlx, void *win);
 void			fdf_drawline(void *mlx, void *win, int coord[], int color);

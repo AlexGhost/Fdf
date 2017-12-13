@@ -6,14 +6,13 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 11:11:42 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/13 14:31:59 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/13 17:20:29 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "fdf_colors.h"
 
-static void	fdfinit(int coord[], int *dc, int *lengthc, int *c)
+static void	fdfinit(int coord[2], int *dc, int *lengthc, int *c)
 {
 	c[0] = coord[0];
 	c[1] = coord[1];
@@ -33,7 +32,7 @@ static void	fdfinit(int coord[], int *dc, int *lengthc, int *c)
 		dc[1] = 0;
 }
 
-static void	changecoord1(int c[], int dc[], int error, int lengthc[])
+static void	changecoord1(int c[2], int dc[2], int error, int lengthc[2])
 {
 	c[0] += dc[0];
 	error += lengthc[1];
@@ -44,7 +43,7 @@ static void	changecoord1(int c[], int dc[], int error, int lengthc[])
 	}
 }
 
-static void	changecoord2(int c[], int dc[], int error, int lengthc[])
+static void	changecoord2(int c[2], int dc[2], int error, int lengthc[2])
 {
 	c[0] += dc[0];
 	error += lengthc[1];
@@ -62,7 +61,7 @@ static void	changecoord2(int c[], int dc[], int error, int lengthc[])
 **		var[3] : erreur
 */
 
-void		fdf_drawline(void *mlx, void *win, int coord[], int color)
+void		fdf_drawline(void *mlx, void *win, int coord[4], int color)
 {
 	int		var[4][2];
 	int		i;
