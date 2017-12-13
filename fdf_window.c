@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 15:53:20 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/12 20:27:36 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/13 13:54:02 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,16 @@ static void	deletemat(int **tab, int y)
 	}
 	free(tab);
 	tab = NULL;
+}
+
+static int	exitfdf(int keycode, void *param)
+{
+	if (keycode == 53)
+	{
+		ft_putendl("fdf shutting down");
+		exit(0);
+	}
+	return (0);
 }
 
 static void	createwindow(int **tab, int x, int y)
@@ -50,6 +60,7 @@ static void	createwindow(int **tab, int x, int y)
 		j++;
 	}
 	deletemat(tab, y);
+	mlx_key_hook(win, exitfdf, 0);
 	mlx_loop(mlx);
 }
 
