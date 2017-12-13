@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 16:23:05 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/12 20:26:55 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/13 13:40:40 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,11 @@ static void		deletemat(char **tab)
 	tab = NULL;
 }
 
-static int		getlength(char **tab)
+static void		filltab(char ***tab, int **y, char **line)
 {
-	int i;
-
-	i = 0;
-	while (tab[i] != NULL)
-		i += 1;
-	return (i);
+	*tab = ft_strsplit(*line, ' ');
+	**y += 1;
+	ft_strdel(line);
 }
 
 int				fdf_checkfile(char *filename, int *x, int *y)
@@ -51,14 +48,12 @@ int				fdf_checkfile(char *filename, int *x, int *y)
 		{
 			if (tab)
 				deletemat(tab);
-			tab = ft_strsplit(line, ' ');
-			*y += 1;
-			ft_strdel(&line);
+			filltab(&tab, &y, &line);
 		}
 		ft_strdel(&line);
 		if (i == -1)
 			return (0);
-		*x = getlength(tab);
+		*x = fdf_getlength(tab);
 		deletemat(tab);
 		close(fd);
 		ft_strdel(&line);
@@ -68,16 +63,13 @@ int				fdf_checkfile(char *filename, int *x, int *y)
 	return (1);
 }
 
-int				fdf_readfile(char *filename, int x, int y)
+int				fdf_readfile(int fd, int x, int y, int **tabi)
 {
-	int		fd;
 	char	*line;
 	char	**tab;
-	int		**tabi;
 	int		i[2];
 
 	tabi = fdf_mallocmat(x, y);
-	fd = open(filename, O_RDONLY);
 	i[1] = 0;
 	while (get_next_line(fd, &line) == 1)
 	{
