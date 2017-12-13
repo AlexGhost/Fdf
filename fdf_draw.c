@@ -6,86 +6,34 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 11:11:42 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/13 17:20:29 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/13 18:22:13 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	fdfinit(int coord[2], int *dc, int *lengthc, int *c)
-{
-	c[0] = coord[0];
-	c[1] = coord[1];
-	lengthc[0] = ft_abs(coord[2] - coord[0]);
-	lengthc[1] = ft_abs(coord[3] - coord[1]);
-	if ((coord[2] - coord[0]) > 0)
-		dc[0] = 1;
-	else if ((coord[2] - coord[0]) < 0)
-		dc[0] = -1;
-	else
-		dc[0] = 0;
-	if ((coord[3] - coord[1]) > 0)
-		dc[1] = 1;
-	else if ((coord[3] - coord[1]) < 0)
-		dc[1] = -1;
-	else
-		dc[1] = 0;
-}
-
-static void	changecoord1(int c[2], int dc[2], int error, int lengthc[2])
-{
-	c[0] += dc[0];
-	error += lengthc[1];
-	if (error > lengthc[0])
-	{
-		error -= lengthc[0];
-		c[1] += dc[1];
-	}
-}
-
-static void	changecoord2(int c[2], int dc[2], int error, int lengthc[2])
-{
-	c[0] += dc[0];
-	error += lengthc[1];
-	if (error > lengthc[0])
-	{
-		error -= lengthc[0];
-		c[1] += dc[1];
-	}
-}
-
-/*
-**		var[0] : coord
-**		var[1] : direction coord
-**		var[2] : longueur coord
-**		var[3] : erreur
-*/
-
 void		fdf_drawline(void *mlx, void *win, int coord[4], int color)
 {
-	int		var[4][2];
-	int		i;
+	double a;
+	double b;
+	double i;
+	double j;
 
-	i = 0;
-	fdfinit(coord, var[1], var[2], var[0]);
-	if (var[2][0] > var[2][1])
-	{
-		var[3][0] = var[2][0] / 2;
-		while (i++ < var[2][0])
-		{
-			changecoord1(var[0], var[1], var[3][0], var[2]);
-			mlx_pixel_put(mlx, win, var[0][0], var[0][1], color);
-		}
-	}
+	if (coord[0] == coord[2])
+		while (coord[1] < coord[3])
+			mlx_pixel_put(mlx, win, coord[0], coord[1]++, color);
 	else
+		a = (coord[1] - coord[3]) / (double)(coord[0] - coord[2]);
+	b = coord[1] - (a * coord[0]) + 0.5;
+	j = coord[1];
+	i = coord[0];
+	while (i <= coord[2])
 	{
-		var[3][0] = var[2][1] / 2;
-		while (i++ < var[2][1])
-		{
-			changecoord2(var[0], var[1], var[3][0], var[2]);
-			mlx_pixel_put(mlx, win, var[0][0], var[0][1], color);
-		}
+		mlx_pixel_put(mlx, win, (int)i, (int)j - 1, color);
+		j = a * i + b;
+		i++;
 	}
+		j++;
 	mlx_pixel_put(mlx, win, coord[0], coord[1], color);
 	mlx_pixel_put(mlx, win, coord[2], coord[3], color);
 }
