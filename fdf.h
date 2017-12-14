@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 11:34:53 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/14 16:32:33 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/14 18:29:46 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 
 # define WIN_WIDTH 1300
 # define WIN_HEIGHT 800
+# define SIZE 15
+# define ELEV 8
+# define OFFSET 50
 
 typedef struct	s_mlx
 {

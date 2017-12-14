@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 14:45:13 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/14 18:08:20 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/14 18:29:48 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,6 @@ void			fdf_drawgrid(t_mlx smlx, int **tab, int w, int h)
 	int			j;
 	t_coord		coord;
 	int			color;
-	int			esp = 15;
-	int			elev = 8;
-	int			offset = 50;
 
 	j = 0;
 	while (j < h - 1)
@@ -40,27 +37,27 @@ void			fdf_drawgrid(t_mlx smlx, int **tab, int w, int h)
 		i = 0;
 		while (i < w - 1)
 		{
-			coord.x1 = (i * esp) + offset;
-			coord.y1 = ((j * esp) - (tab[j][i] * elev)) + offset;
-			coord.x2 = ((i + 1) * esp) + offset;
-			coord.y2 = ((j * esp) - (tab[j][i + 1] * elev)) + offset;
+			coord.x1 = (i * SIZE) + OFFSET;
+			coord.y1 = ((j * SIZE) - (tab[j][i] * ELEV)) + OFFSET;
+			coord.x2 = ((i + 1) * SIZE) + OFFSET;
+			coord.y2 = ((j * SIZE) - (tab[j][i + 1] * ELEV)) + OFFSET;
 			fdf_drawline(smlx, coord, getcolor(tab[j][i]));
-			coord.x1 = (i * esp) + offset;
-			coord.y1 = ((j * esp) - (tab[j][i] * elev)) + offset;
-			coord.x2 = (i * esp) + offset;
-			coord.y2 = (((j + 1) * esp) - (tab[j + 1][i] * elev)) + offset;
+			coord.x1 = (i * SIZE) + OFFSET;
+			coord.y1 = ((j * SIZE) - (tab[j][i] * ELEV)) + OFFSET;
+			coord.x2 = (i * SIZE) + OFFSET;
+			coord.y2 = (((j + 1) * SIZE) - (tab[j + 1][i] * ELEV)) + OFFSET;
 			fdf_drawline(smlx, coord, getcolor(tab[j][i]));
-			coord.x1 = (i * esp) + offset;
-			coord.y1 = (((h - 1) * esp) - (tab[h - 1][i] * elev)) + offset;
-			coord.x2 = ((i + 1) * esp) + offset;
-			coord.y2 = (((h - 1) * esp) - (tab[h - 1][i + 1] * elev)) + offset;
+			coord.x1 = (i * SIZE) + OFFSET;
+			coord.y1 = (((h - 1) * SIZE) - (tab[h - 1][i] * ELEV)) + OFFSET;
+			coord.x2 = ((i + 1) * SIZE) + OFFSET;
+			coord.y2 = (((h - 1) * SIZE) - (tab[h - 1][i + 1] * ELEV)) + OFFSET;
 			fdf_drawline(smlx, coord, getcolor(tab[j][i]));
 			i++;
 		}
-		coord.x1 = (i * esp) + offset;
-		coord.y1 = ((j * esp) - (tab[j][i] * elev)) + offset;
-		coord.x2 = (i * esp) + offset;
-		coord.y2 = (((j + 1) * esp) - (tab[j + 1][i] * elev)) + offset;
+		coord.x1 = (i * SIZE) + OFFSET;
+		coord.y1 = ((j * SIZE) - (tab[j][i] * ELEV)) + OFFSET;
+		coord.x2 = (i * SIZE) + OFFSET;
+		coord.y2 = (((j + 1) * SIZE) - (tab[j + 1][i] * ELEV)) + OFFSET;
 		fdf_drawline(smlx, coord, getcolor(tab[j][i]));
 		j++;
 	}
