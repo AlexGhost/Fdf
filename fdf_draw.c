@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 11:11:42 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/14 16:46:24 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/14 17:49:57 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,6 @@ void		fdf_drawline(t_mlx smlx, t_coord coord, int color)
 		else
 			incr_y(smlx, l, coord, color);
 	}
+	mlx_pixel_put(smlx.mlx, smlx.win, (int)coord.x1, (int)coord.y1, color);
+	mlx_pixel_put(smlx.mlx, smlx.win, (int)coord.x2, (int)coord.y2, color);
 }
