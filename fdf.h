@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 11:34:53 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/13 17:20:31 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/14 16:32:33 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,23 @@ typedef struct	s_mlx
 
 typedef struct	s_coord
 {
-	int			c[2];
-	int			dc[2];
-	int			lc[2];
-	int			*err;
+	int			x1;
+	int			x2;
+	int			y1;
+	int			y2;
 }				t_coord;
 
+typedef struct	s_line
+{
+	double		a;
+	double		b;
+	double		x;
+	double		y;
+	int			tmp;
+}				t_line;
+
 void			testdraw(void *mlx, void *win);
-void			fdf_drawline(void *mlx, void *win, int coord[], int color);
+void			fdf_drawline(t_mlx smlx, t_coord coord, int color);
 int				fdf_checkfile(char *filename, int *x, int *y);
 int				fdf_readfile(int fd, int x, int y, int **tabi);
 void			fdf_displayfile(int **tab, int x, int y);

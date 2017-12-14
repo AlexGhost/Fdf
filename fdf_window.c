@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 15:53:20 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/13 15:06:33 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/14 15:23:54 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	deletemat(int **tab, int y)
 	tab = NULL;
 }
 
-static int	exitfdf(int keycode, void *param)
+static int	exitfdf(int keycode)
 {
 	if (keycode == 53)
 	{
