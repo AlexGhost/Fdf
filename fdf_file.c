@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 16:23:05 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/13 13:40:40 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/14 16:53:04 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int				fdf_readfile(int fd, int x, int y, int **tabi)
 		i[0] = 0;
 		while (tab[i[0]])
 		{
-			if (ft_isdigit(*tab[i[0]]) == 0)
+			if (ft_isdigit(*tab[i[0]]) == 0 && *tab[i[0]] != '-')
 				return (0);
 			tabi[i[1]][i[0]] = ft_atoi(tab[i[0]]);
 			i[0]++;
