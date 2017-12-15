@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 15:23:45 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/15 15:46:57 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/15 15:53:28 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static void		convert_iso(t_coord *c)
 {
-	c->x1 = (c->x1) + ((c->y1) / 2);
-	c->x2 = (c->x2) + ((c->y2) / 2);
-	c->y1 = c->y1 / 2;
-	c->y2 = c->y2 / 2;
+	c->x1 = (c->x1) + ((c->y1) / 3);
+	c->x2 = (c->x2) + ((c->y2) / 3);
+	c->y1 = c->y1;
+	c->y2 = c->y2;
 }
 
 void			fdf_getcoord_hor(t_coord *c, int **tab, int i[2])
