@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 11:34:34 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/13 13:41:13 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/15 15:17:23 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int			main(int ac, char **av)
 		ft_putendl("usage: <filename> | name of fdf file");
 		return (0);
 	}
-	else if (fdf_checkfile(av[1], &x, &y))
+	else if (fdf_checkfile(av[1], &x, &y, 0))
 	{
 		ft_putstr("x: ");
 		ft_putnbr(x);

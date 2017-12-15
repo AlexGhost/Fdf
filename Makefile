@@ -1,8 +1,8 @@
 NAME = fdf
 CFLAG = -Wall -Werror -Wextra
-##CC = gcc $(CFLAG)
-CC = gcc
-SRC = main.c fdf_draw.c fdf_file.c fdf_window.c fdf_grid.c fdf_misc.c
+CC = gcc $(CFLAG)
+SRC = main.c fdf_draw.c fdf_file.c fdf_window.c fdf_isogrid.c fdf_misc.c \
+	  fdf_getcoord.c
 OBJ = $(SRC:.c=.o)
 POBJ = $(addprefix obj/,$(OBJ))
 

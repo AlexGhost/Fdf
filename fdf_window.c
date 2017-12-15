@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 15:53:20 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/14 15:23:54 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/15 14:30:45 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	createwindow(int **tab, int x, int y)
 
 	smlx.mlx = mlx_init();
 	smlx.win = mlx_new_window(smlx.mlx, WIN_WIDTH, WIN_HEIGHT, "fdf");
-	fdf_drawgrid(smlx, tab, x, y);
+	fdf_drawisogrid(smlx, tab, x, y);
 	deletemat(tab, y);
 	mlx_key_hook(smlx.win, exitfdf, 0);
 	mlx_loop(smlx.mlx);

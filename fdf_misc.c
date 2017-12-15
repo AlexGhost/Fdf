@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 13:24:42 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/13 13:27:12 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/15 15:48:43 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int			**fdf_mallocmat(int x, int y)
 {
 	int **tab;
 	int i;
-	int j;
 
 	i = 0;
 	tab = ft_memalloc((size_t)y * sizeof(int*));

@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 16:23:05 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/14 16:53:04 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/15 15:19:31 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void		filltab(char ***tab, int **y, char **line)
 	ft_strdel(line);
 }
 
-int				fdf_checkfile(char *filename, int *x, int *y)
+int				fdf_checkfile(char *filename, int *x, int *y, int ok)
 {
 	int		fd;
 	int		i;
@@ -46,12 +46,12 @@ int				fdf_checkfile(char *filename, int *x, int *y)
 		tab = NULL;
 		while ((i = get_next_line(fd, &line)) == 1)
 		{
+			ok = 1;
 			if (tab)
 				deletemat(tab);
 			filltab(&tab, &y, &line);
 		}
-		ft_strdel(&line);
-		if (i == -1)
+		if (i == -1 || ok == 0)
 			return (0);
 		*x = fdf_getlength(tab);
 		deletemat(tab);

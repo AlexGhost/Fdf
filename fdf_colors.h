@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 11:34:42 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/11 15:33:19 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/15 14:23:23 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,8 @@
 # define C_BLUE 0x0077B5FE
 # define C_RED 0x00C1332B
 # define C_BROWN 0x00663300
+# define C_ALT1 0x00FF9900
+# define C_ALT2 0x00FF6600
+# define C_ALT3 0x00FF3300
 
 #endif
