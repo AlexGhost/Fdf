@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 11:34:53 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/15 15:53:40 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/15 17:51:35 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # define WIN_WIDTH 1200
 # define WIN_HEIGHT 800
 # define ELEV 2
-# define SIZE 25
-# define OFFSET 50
+# define SIZE 0.5
+# define OFFSET 30
 
 typedef struct	s_mlx
 {
@@ -54,8 +54,7 @@ void			fdf_displayfile(int **tab, int x, int y);
 int				**fdf_mallocmat(int x, int y);
 int				fdf_getlength(char **tab);
 void			fdf_drawisogrid(t_mlx smlx, int **tab, int w, int h);
-void			fdf_getcoord_hor(t_coord *c, int **tab, int i[2]);
-void			fdf_getcoord_ver(t_coord *c, int **tab, int i[2]);
-void			fdf_getcoord_lasthor(t_coord *c, int **tab, int i[2], int h);
+void			fdf_getcoord_hor(t_coord *c, int **tab, int i[2], int w);
+void			fdf_getcoord_ver(t_coord *c, int **tab, int i[2], int w);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 14:29:24 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/15 15:48:23 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/15 17:55:52 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static int		getcolor(int z)
 void			fdf_drawisogrid(t_mlx smlx, int **tab, int w, int h)
 {
 	int			i[2];
+	int			tmp;
 	t_coord		coord;
 
 	i[1] = 0;
@@ -33,15 +34,18 @@ void			fdf_drawisogrid(t_mlx smlx, int **tab, int w, int h)
 		i[0] = 0;
 		while (i[0] < w - 1)
 		{
-			fdf_getcoord_hor(&coord, tab, i);
+			fdf_getcoord_hor(&coord, tab, i, w);
 			fdf_drawline(smlx, coord, getcolor(tab[i[1]][i[0]]));
-			fdf_getcoord_ver(&coord, tab, i);
+			fdf_getcoord_ver(&coord, tab, i, w);
 			fdf_drawline(smlx, coord, getcolor(tab[i[1]][i[0]]));
-			fdf_getcoord_lasthor(&coord, tab, i, h);
+			tmp = i[1];
+			i[1] = h - 1;
+			fdf_getcoord_hor(&coord, tab, i, w);
 			fdf_drawline(smlx, coord, getcolor(tab[i[1]][i[0]]));
+			i[1] = tmp;
 			i[0]++;
 		}
-		fdf_getcoord_ver(&coord, tab, i);
+		fdf_getcoord_ver(&coord, tab, i, w);
 		fdf_drawline(smlx, coord, getcolor(tab[i[1]][i[0]]));
 		i[1]++;
 	}
