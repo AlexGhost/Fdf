@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 15:23:45 by acourtin          #+#    #+#             */
-/*   Updated: 2017/12/16 14:04:52 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/12/16 19:14:08 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ static void		getsize(int *w)
 	}
 	*w = i;
 	*w *= 1.5;
-	ft_putstr("size: ");
-	ft_putnbr(*w);
 }
 
 void			fdf_getcoord_hor(t_coord *c, int **tab, int i[2], int w)
